@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
         Add.setVisibility(View.VISIBLE);
         Button Remove = findViewById(R.id.Remove);
         Remove.setVisibility(View.VISIBLE);
+        Button Analytics = findViewById(R.id.Analytics);
+        Analytics.setVisibility(View.VISIBLE);
     }
 
     public String getNameInput() {
