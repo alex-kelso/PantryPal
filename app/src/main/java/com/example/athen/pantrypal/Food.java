@@ -1,15 +1,26 @@
 package com.example.athen.pantrypal;
 
 public class Food {
-    private String name, type, expiration;
+    private String name, type, expiration, multipleType;
+    private int pricePerMultipleType;
 
     public Food() {
     }
 
-    public Food(String name, String type, String expiration) {
+    public Food(String name, String type, String expiration, String multipleType, int pricePerMultipleType) {
         this.name = name;
         this.type = type;
         this.expiration = expiration;
+        this.multipleType = multipleType;
+        this.pricePerMultipleType = pricePerMultipleType;
+    }
+
+    public String getMultipleType() {
+        return multipleType;
+    }
+
+    public int getPricePerMultipleType() {
+        return pricePerMultipleType;
     }
 
     public String getName() {

@@ -63,17 +63,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Add(View view) {
-        PantryPalItems foo = new PantryPalItems();
-        foo.createItemArr();
 
+        Button Add = findViewById(R.id.Add);
+        Add.setVisibility(View.GONE);
+        Button Remove = findViewById(R.id.Remove);
+        Remove.setVisibility(View.GONE);
         Button Done = findViewById(R.id.Done);
         Done.setVisibility(View.VISIBLE);
         EditText NewFood = findViewById(R.id.NewFood);
         NewFood.setEnabled(true);
+
+        PantryPalItems foo = new PantryPalItems();
+        foo.createItemArr();
+
         name = getAddInput();
         for (Item i: foo.ItemArr) {
             if (name.equals(i.getName())) {
-                Food food = new Food(i.getName(), i.getCategory(), i.getExpiration());
+                Food food = new Food(i.getName(), i.getCategory(), i.getExpiration(), i.getMultipleType(), i.getPricePerMultipleType());
                 foodList.add(food);
                 preparefoodData();
             }
@@ -81,11 +87,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Done(View v) {
+        Add(v);
         hideInput();
         Button Done = findViewById(R.id.Done);
         Done.setVisibility(View.GONE);
         EditText NewFood = findViewById(R.id.NewFood);
         NewFood.getText().clear();
+        Button Add = findViewById(R.id.Add);
+        Add.setVisibility(View.VISIBLE);
+        Button Remove = findViewById(R.id.Remove);
+        Remove.setVisibility(View.VISIBLE);
     }
 
     public String getAddInput() {
