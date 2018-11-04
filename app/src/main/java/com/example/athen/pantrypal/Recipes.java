@@ -27,5 +27,4 @@ public class Recipes extends AppCompatActivity {
             }
         });
     }
-
 }

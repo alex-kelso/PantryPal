@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -71,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
         Button Done2 = findViewById(R.id.Done2);
         Done2.setVisibility(View.GONE);
 
+        Switch Waste = findViewById(R.id.WasteSwitch);
+        Waste.setVisibility(View.GONE);
+
         Button SwitchToAnalytics = findViewById(R.id.Analytics);
         SwitchToAnalytics.setOnClickListener(new View.OnClickListener() {
                                                  public void onClick(View arg0) {
@@ -120,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
             if (name.equals(i.getName())) {
                 Food food = new Food(i.getName(), i.getCategory(), i.getExpiration(), i.getMultipleType(), i.getPricePerMultipleType());
                 foodList.add(food);
+                int foo1 = food.getPricePerMultipleType();
+                AnalyticsActivity.totalMoney += foo1;
                 preparefoodData();
             }
         }
@@ -138,15 +144,21 @@ public class MainActivity extends AppCompatActivity {
         Done.setVisibility(View.VISIBLE);
         EditText NewFood = findViewById(R.id.NewFood);
         NewFood.setEnabled(true);
-        EditText NewAmount = findViewById(R.id.NewAmount);
-        NewAmount.setEnabled(true);
+        Switch Waste = findViewById(R.id.WasteSwitch);
+        Waste.setVisibility(View.VISIBLE);
 
         name = getNameInput();
-        amount = getAmountInput();
+        boolean waste = Waste.isChecked();
         for(Food f: foodList) {
             if (name.equals(f.getName())) {
                 foodList.remove(f);
+                if (!(waste)) {
+                    int foo = f.getPricePerMultipleType();
+                    AnalyticsActivity.analyticsWaste += foo;
+                }
                 preparefoodData();
+            } else {
+
             }
         }
     }
@@ -171,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
     public void Done2(View v) {
         Remove(v);
         hideInput();
+        Switch Waste = findViewById(R.id.WasteSwitch);
+        Waste.setVisibility(View.GONE);
         Button Done = findViewById(R.id.Done2);
         Done.setVisibility(View.GONE);
         EditText NewFood = findViewById(R.id.NewFood);
