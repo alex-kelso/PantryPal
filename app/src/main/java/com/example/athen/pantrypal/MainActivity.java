@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Add(View view) {
+        Button SwitchToAnalytics = findViewById(R.id.Analytics);
+        SwitchToAnalytics.setVisibility(View.GONE);
         Button Add = findViewById(R.id.Add);
         Add.setVisibility(View.GONE);
         Button Remove = findViewById(R.id.Remove);
