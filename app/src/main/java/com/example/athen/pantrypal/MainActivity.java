@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Remove(View view) {
+        if (foodList.isEmpty())
+            return;
         foodList.remove(0);
 
         preparefoodData();
