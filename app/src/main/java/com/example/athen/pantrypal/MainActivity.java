@@ -63,15 +63,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Add(View view) {
+        PantryPalItems foo = new PantryPalItems();
+        foo.createItemArr();
+
         Button Done = findViewById(R.id.Done);
         Done.setVisibility(View.VISIBLE);
         EditText NewFood = findViewById(R.id.NewFood);
         NewFood.setEnabled(true);
         name = getAddInput();
-        if (!(name.equals(""))) {
-            Food food = new Food(name, "Veggie", "3 days");
-            foodList.add(food);
-            preparefoodData();
+        for (Item i: foo.ItemArr) {
+            if (name.equals(i.getName())) {
+                Food food = new Food(i.getName(), i.getCategory(), i.getExpiration());
+                foodList.add(food);
+                preparefoodData();
+            }
         }
     }
 
