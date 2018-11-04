@@ -33,11 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public String getName() {
         return name;
     }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 27a787fe666c1445075ae99607e646a2c3e2a40c
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,11 +86,7 @@ public class MainActivity extends AppCompatActivity {
     public String getAddInput() {
         EditText NewFood = findViewById(R.id.NewFood);
         NewFood.setVisibility(View.VISIBLE);
-<<<<<<< HEAD
         String foo  = NewFood.getText().toString();
-=======
-        String foo = NewFood.getText().toString();
->>>>>>> 27a787fe666c1445075ae99607e646a2c3e2a40c
         return foo;
     }
 
