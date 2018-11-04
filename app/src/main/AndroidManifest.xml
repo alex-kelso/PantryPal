@@ -35,6 +35,10 @@
         <activity
             android:name=".AnalyticsActivity"
             android:label="@string/title_activity_analytics"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Recipes"
+            android:label="@string/title_activity_recipes"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

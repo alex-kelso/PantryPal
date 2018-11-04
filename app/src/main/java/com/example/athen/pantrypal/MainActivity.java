@@ -68,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
         Button Done = findViewById(R.id.Done);
         Done.setVisibility(View.GONE);
 
+        Button Done2 = findViewById(R.id.Done2);
+        Done2.setVisibility(View.GONE);
+
         Button SwitchToAnalytics = findViewById(R.id.Analytics);
         SwitchToAnalytics.setOnClickListener(new View.OnClickListener() {
                                                  public void onClick(View arg0) {
@@ -76,6 +79,14 @@ public class MainActivity extends AppCompatActivity {
                                                      startActivity(myIntent);
                                                  }
                                              });
+        Button SwitchToRecipes = findViewById(R.id.Recipe);
+        SwitchToRecipes.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                Intent myIntent = new Intent(MainActivity.this,
+                        Recipes.class);
+                startActivity(myIntent);
+            }
+        });
 
         preparefoodData();
     }
@@ -87,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
     public void Add(View view) {
         Button SwitchToAnalytics = findViewById(R.id.Analytics);
         SwitchToAnalytics.setVisibility(View.GONE);
+        Button SwitchToRecipe = findViewById(R.id.Recipe);
+        SwitchToRecipe.setVisibility(View.GONE);
         Button Add = findViewById(R.id.Add);
         Add.setVisibility(View.GONE);
         Button Remove = findViewById(R.id.Remove);
@@ -112,6 +125,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void Remove(View view) {
+        Button SwitchToAnalytics = findViewById(R.id.Analytics);
+        SwitchToAnalytics.setVisibility(View.GONE);
+        Button SwitchToRecipe = findViewById(R.id.Recipe);
+        SwitchToRecipe.setVisibility(View.GONE);
+        Button Add = findViewById(R.id.Add);
+        Add.setVisibility(View.GONE);
+        Button Remove = findViewById(R.id.Remove);
+        Remove.setVisibility(View.GONE);
+        Button Done = findViewById(R.id.Done2);
+        Done.setVisibility(View.VISIBLE);
+        EditText NewFood = findViewById(R.id.NewFood);
+        NewFood.setEnabled(true);
+        EditText NewAmount = findViewById(R.id.NewAmount);
+        NewAmount.setEnabled(true);
+
+        name = getNameInput();
+        amount = getAmountInput();
+        for(Food f: foodList) {
+            if (name.equals(f.getName())) {
+                foodList.remove(f);
+                preparefoodData();
+            }
+        }
+    }
+
     public void Done(View v) {
         Add(v);
         hideInput();
@@ -125,6 +164,25 @@ public class MainActivity extends AppCompatActivity {
         Remove.setVisibility(View.VISIBLE);
         Button Analytics = findViewById(R.id.Analytics);
         Analytics.setVisibility(View.VISIBLE);
+        Button Recipe = findViewById(R.id.Recipe);
+        Recipe.setVisibility(View.VISIBLE);
+    }
+
+    public void Done2(View v) {
+        Remove(v);
+        hideInput();
+        Button Done = findViewById(R.id.Done2);
+        Done.setVisibility(View.GONE);
+        EditText NewFood = findViewById(R.id.NewFood);
+        NewFood.getText().clear();
+        Button Add = findViewById(R.id.Add);
+        Add.setVisibility(View.VISIBLE);
+        Button Remove = findViewById(R.id.Remove);
+        Remove.setVisibility(View.VISIBLE);
+        Button Analytics = findViewById(R.id.Analytics);
+        Analytics.setVisibility(View.VISIBLE);
+        Button Recipe = findViewById(R.id.Recipe);
+        Recipe.setVisibility(View.VISIBLE);
     }
 
     public String getNameInput() {
@@ -149,12 +207,5 @@ public class MainActivity extends AppCompatActivity {
         EditText NewAmount = findViewById(R.id.NewAmount);
         NewAmount.setVisibility(View.GONE);
         NewAmount.setEnabled(false);
-    }
-
-    public void Remove(View view) {
-        if (foodList.isEmpty())
-            return;
-        foodList.remove(0);
-        preparefoodData();
     }
 }
