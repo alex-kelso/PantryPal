@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,10 +18,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+
 public class MainActivity extends AppCompatActivity {
     private List<Food> foodList = new ArrayList<>();
     private RecyclerView recyclerView;
     private FoodsAdapter mAdapter;
+
+    private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         EditText NewFood = findViewById(R.id.NewFood);
         NewFood.setVisibility(View.GONE);
 
+        Button Done = findViewById(R.id.Done);
+        Done.setVisibility(View.GONE);
+
         preparefoodData();
     }
 
@@ -48,17 +64,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Add(View view) {
-        String newName = getAddInput();
-        Food food = new Food(newName, null, null);
-        foodList.add(food);
-        preparefoodData();
+        Button Done = findViewById(R.id.Done);
+        Done.setVisibility(View.VISIBLE);
+        EditText NewFood = findViewById(R.id.NewFood);
+        NewFood.setEnabled(true);
+        name = getAddInput();
+        if (!(name.equals(""))) {
+            Food food = new Food(name, "Veggie", "3 days");
+            foodList.add(food);
+            preparefoodData();
+        }
+    }
+
+    public void Done(View v) {
+        hideInput();
+        Button Done = findViewById(R.id.Done);
+        Done.setVisibility(View.GONE);
+        EditText NewFood = findViewById(R.id.NewFood);
+        NewFood.getText().clear();
     }
 
     public String getAddInput() {
         EditText NewFood = findViewById(R.id.NewFood);
         NewFood.setVisibility(View.VISIBLE);
-        String newName = NewFood.getText().toString();
-        return newName;
+        String foo  = NewFood.getText().toString();
+        return foo;
+    }
+
+    public void hideInput() {
+        EditText NewFood = findViewById(R.id.NewFood);
+        NewFood.setVisibility(View.GONE);
+        NewFood.setEnabled(false);
     }
 
     public void Remove(View view) {
