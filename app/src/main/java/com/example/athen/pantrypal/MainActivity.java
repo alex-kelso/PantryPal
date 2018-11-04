@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         name = getNameInput();
         amount = getAmountInput();
         for (Item i: foo.ItemArr) {
-            if (name.equals(i.getName())) {
+            if (name.equalsIgnoreCase(i.getName())) {
                 Food food = new Food(i.getName(), i.getCategory(), i.getExpiration(), i.getMultipleType(), i.getPricePerMultipleType());
                 foodList.add(food);
                 preparefoodData();

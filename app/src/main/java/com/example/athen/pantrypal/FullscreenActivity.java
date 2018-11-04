@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.content.Intent;
 
@@ -35,7 +34,7 @@ public class FullscreenActivity extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
-    //private Button registerButton;
+
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -97,7 +96,7 @@ public class FullscreenActivity extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
-        Button registerButton = (Button) findViewById(R.id.dummy_button);
+        Button registerButton = findViewById(R.id.dummy_button);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override

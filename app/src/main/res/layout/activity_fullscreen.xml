@@ -26,6 +26,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/spark_post_logo"
         android:fitsSystemWindows="true">
 
         <LinearLayout
@@ -51,11 +52,11 @@
         </LinearLayout>
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="465dp"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/spark_post_logo" />
+    <!--<ImageView-->
+    <!--android:id="@+id/imageView"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:scaleType="centerCrop"-->
+    <!--app:srcCompat="@drawable/spark_post_logo" />-->
 
 </FrameLayout>
