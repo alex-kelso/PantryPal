@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
     private List<Food> foodList = new ArrayList<>();
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        EditText NewFood = (EditText) findViewById(R.id.NewFood);
+        EditText NewFood = findViewById(R.id.NewFood);
         NewFood.setVisibility(View.GONE);
 
         preparefoodData();
@@ -47,12 +48,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Add(View view) {
-        EditText NewFood = (EditText) findViewById(R.id.NewFood);
-        NewFood.setVisibility(View.VISIBLE);
-        Food food2 = new Food("Eggs", "Eggs/Dairy", "5 Days");
-        foodList.add(food2);
-
+        String newName = getAddInput();
+        Food food = new Food(newName, null, null);
+        foodList.add(food);
         preparefoodData();
+    }
+
+    public String getAddInput() {
+        EditText NewFood = findViewById(R.id.NewFood);
+        NewFood.setVisibility(View.VISIBLE);
+        String newName = NewFood.getText().toString();
+        return newName;
     }
 
     public void Remove(View view) {
