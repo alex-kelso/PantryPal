@@ -31,7 +31,7 @@
     <EditText
         android:id="@+id/NewFood"
         android:layout_width="115dp"
-        android:layout_height="47dp"
+        android:layout_height="46dp"
         android:layout_marginEnd="268dp"
         android:layout_marginRight="268dp"
         android:hint="food..."
@@ -82,13 +82,39 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/Analytics"
+        android:id="@+id/Done2"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="Done2"
+        android:text="Done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/Analytics"
+        android:layout_width="101dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Analytics"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.339"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/Recipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="195dp"
+        android:layout_marginLeft="195dp"
+        android:layout_marginBottom="8dp"
+        android:text="Recipes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
