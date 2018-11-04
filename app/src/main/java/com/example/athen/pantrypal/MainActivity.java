@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public String getName() {
         return name;
     }
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
