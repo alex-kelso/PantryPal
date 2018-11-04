@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "738866519702",
+    "firebase_url": "https://awesomeproject-780a1.firebaseio.com",
+    "project_id": "awesomeproject-780a1",
+    "storage_bucket": "awesomeproject-780a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738866519702:android:0bb5c430c89918de",
+        "android_client_info": {
+          "package_name": "com.example.athen.pantrypal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738866519702-g32es4ncahnb3ufn1bf86grm2d9ujhq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgOT_eXp3LiGT0if-vyop-KoYXzmjC758"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
