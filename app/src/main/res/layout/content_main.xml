@@ -8,18 +8,32 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <EditText
+        android:id="@+id/NewAmount"
+        android:layout_width="115dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginRight="132dp"
+        android:layout_marginBottom="8dp"
+        android:hint="amount..."
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="521dp"
-        android:scrollbars="vertical" />
+        android:layout_height="449dp"
+        android:scrollbars="vertical">
+
+    </android.support.v7.widget.RecyclerView>
 
     <EditText
         android:id="@+id/NewFood"
-        android:layout_width="238dp"
+        android:layout_width="115dp"
         android:layout_height="47dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginRight="128dp"
+        android:layout_marginEnd="268dp"
+        android:layout_marginRight="268dp"
         android:hint="food..."
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"

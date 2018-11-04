@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private FoodsAdapter mAdapter;
 
     private String name;
+    private String amount;
 
     public void setName(String name) {
         this.name = name;
@@ -32,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
 
     public String getName() {
         return name;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getAmount() {
+        return amount;
     }
 
     @Override
@@ -52,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         EditText NewFood = findViewById(R.id.NewFood);
         NewFood.setVisibility(View.GONE);
 
+        EditText NewAmount = findViewById(R.id.NewAmount);
+        NewAmount.setVisibility(View.GONE);
+
         Button Done = findViewById(R.id.Done);
         Done.setVisibility(View.GONE);
 
@@ -63,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Add(View view) {
-
         Button Add = findViewById(R.id.Add);
         Add.setVisibility(View.GONE);
         Button Remove = findViewById(R.id.Remove);
@@ -72,11 +83,14 @@ public class MainActivity extends AppCompatActivity {
         Done.setVisibility(View.VISIBLE);
         EditText NewFood = findViewById(R.id.NewFood);
         NewFood.setEnabled(true);
+        EditText NewAmount = findViewById(R.id.NewAmount);
+        NewAmount.setEnabled(true);
 
         PantryPalItems foo = new PantryPalItems();
         foo.createItemArr();
 
-        name = getAddInput();
+        name = getNameInput();
+        amount = getAmountInput();
         for (Item i: foo.ItemArr) {
             if (name.equals(i.getName())) {
                 Food food = new Food(i.getName(), i.getCategory(), i.getExpiration(), i.getMultipleType(), i.getPricePerMultipleType());
@@ -99,10 +113,17 @@ public class MainActivity extends AppCompatActivity {
         Remove.setVisibility(View.VISIBLE);
     }
 
-    public String getAddInput() {
+    public String getNameInput() {
         EditText NewFood = findViewById(R.id.NewFood);
         NewFood.setVisibility(View.VISIBLE);
         String foo  = NewFood.getText().toString();
+        return foo;
+    }
+
+    public String getAmountInput() {
+        EditText NewAmount = findViewById(R.id.NewAmount);
+        NewAmount.setVisibility(View.VISIBLE);
+        String foo = NewAmount.getText().toString();
         return foo;
     }
 
@@ -110,6 +131,10 @@ public class MainActivity extends AppCompatActivity {
         EditText NewFood = findViewById(R.id.NewFood);
         NewFood.setVisibility(View.GONE);
         NewFood.setEnabled(false);
+
+        EditText NewAmount = findViewById(R.id.NewAmount);
+        NewAmount.setVisibility(View.GONE);
+        NewAmount.setEnabled(false);
     }
 
     public void Remove(View view) {
