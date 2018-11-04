@@ -1,6 +1,7 @@
 package com.example.athen.pantrypal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -66,6 +67,15 @@ public class MainActivity extends AppCompatActivity {
 
         Button Done = findViewById(R.id.Done);
         Done.setVisibility(View.GONE);
+
+        Button SwitchToAnalytics = findViewById(R.id.Analytics);
+        SwitchToAnalytics.setOnClickListener(new View.OnClickListener() {
+                                                 public void onClick(View arg0) {
+                                                     Intent myIntent = new Intent(MainActivity.this,
+                                                             AnalyticsActivity.class);
+                                                     startActivity(myIntent);
+                                                 }
+                                             });
 
         preparefoodData();
     }
