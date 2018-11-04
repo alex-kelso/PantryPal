@@ -64,5 +64,8 @@
         app:layout_constraintBottom_toTopOf="@+id/Remove"
         app:layout_constraintEnd_toEndOf="parent" />
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 27a787fe666c1445075ae99607e646a2c3e2a40c
 </android.support.constraint.ConstraintLayout>
