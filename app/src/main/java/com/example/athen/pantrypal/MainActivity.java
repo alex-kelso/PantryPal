@@ -17,6 +17,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -83,15 +84,6 @@ public class MainActivity extends AppCompatActivity {
                                                      startActivity(myIntent);
                                                  }
                                              });
-        Button SwitchToRecipes = findViewById(R.id.Recipe);
-        SwitchToRecipes.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-                Intent myIntent = new Intent(MainActivity.this,
-                        Recipes.class);
-                startActivity(myIntent);
-            }
-        });
-
         preparefoodData();
     }
 
@@ -102,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
     public void Add(View view) {
         Button SwitchToAnalytics = findViewById(R.id.Analytics);
         SwitchToAnalytics.setVisibility(View.GONE);
-        Button SwitchToRecipe = findViewById(R.id.Recipe);
-        SwitchToRecipe.setVisibility(View.GONE);
         Button Add = findViewById(R.id.Add);
         Add.setVisibility(View.GONE);
         Button Remove = findViewById(R.id.Remove);
@@ -126,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
                 foodList.add(food);
                 int foo1 = food.getPricePerMultipleType();
                 AnalyticsActivity.totalMoney += foo1;
+                if (name == "Bananas") {
+                    boolean bananasBread = true;
+                    AnalyticsActivity.bananaBread = bananasBread;
+                }
                 preparefoodData();
             }
         }
@@ -134,8 +128,6 @@ public class MainActivity extends AppCompatActivity {
     public void Remove(View view) {
         Button SwitchToAnalytics = findViewById(R.id.Analytics);
         SwitchToAnalytics.setVisibility(View.GONE);
-        Button SwitchToRecipe = findViewById(R.id.Recipe);
-        SwitchToRecipe.setVisibility(View.GONE);
         Button Add = findViewById(R.id.Add);
         Add.setVisibility(View.GONE);
         Button Remove = findViewById(R.id.Remove);
@@ -149,16 +141,16 @@ public class MainActivity extends AppCompatActivity {
 
         name = getNameInput();
         boolean waste = Waste.isChecked();
-        for(Food f: foodList) {
-            if (name.equals(f.getName())) {
-                foodList.remove(f);
+        Iterator itr = foodList.iterator();
+        while (itr.hasNext()) {
+            Food f = (Food) itr.next();
+            if(name.equals(f.getName())) {
+                itr.remove();
                 if (!(waste)) {
                     int foo = f.getPricePerMultipleType();
                     AnalyticsActivity.analyticsWaste += foo;
                 }
                 preparefoodData();
-            } else {
-
             }
         }
     }
@@ -176,8 +168,6 @@ public class MainActivity extends AppCompatActivity {
         Remove.setVisibility(View.VISIBLE);
         Button Analytics = findViewById(R.id.Analytics);
         Analytics.setVisibility(View.VISIBLE);
-        Button Recipe = findViewById(R.id.Recipe);
-        Recipe.setVisibility(View.VISIBLE);
     }
 
     public void Done2(View v) {
@@ -195,8 +185,6 @@ public class MainActivity extends AppCompatActivity {
         Remove.setVisibility(View.VISIBLE);
         Button Analytics = findViewById(R.id.Analytics);
         Analytics.setVisibility(View.VISIBLE);
-        Button Recipe = findViewById(R.id.Recipe);
-        Recipe.setVisibility(View.VISIBLE);
     }
 
     public String getNameInput() {
